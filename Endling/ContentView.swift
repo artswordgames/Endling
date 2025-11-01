@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Endling v1.3
+//  Endling v1.4
 //
 //  Created by artsw0rd on 10/31/25.
 //
@@ -98,51 +98,64 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button("Oracle") {
+                Button(action: {
                     var oracleNumber: Int
                     repeat {
                         oracleNumber = Int.random(in: 0...(numberOfOracles-1))
                     } while oracleNumber == lastImageNumber
                     imageName = "oracle\(oracleNumber)"
                     lastImageNumber = oracleNumber
+                }) {
+                    Text("Oracle")
+                        .font(.custom("ArchivoBlack-Regular", size: 16))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(Color.accent)
+                        .cornerRadius(10)
                 }
-                .font(.custom("ArchivoBlack-Regular", size: 20))
-                .foregroundColor(.white)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 12)
-                .background(Color.accent)
-                .cornerRadius(10)
+                .buttonStyle(PlainButtonStyle())
                 
                 HStack(spacing: 10) {
-                    Button("Wilderness") {
+                    Button(action: {
                         var wildernessNumber: Int
                         repeat {
                             wildernessNumber = Int.random(in: 0...(numberOfWildCiv-1))
                         } while wildernessNumber == lastImageNumber
                         imageName = "wilderness\(wildernessNumber)"
                         lastImageNumber = wildernessNumber
+                    }) {
+                        Text("Wilderness")
+                            .font(.custom("ArchivoBlack-Regular", size: 15))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 10)
+                            .background(Color.accent)
+                            .cornerRadius(10)
+                            .minimumScaleFactor(0.8)
+                            .lineLimit(1)
                     }
-                    .font(.custom("ArchivoBlack-Regular", size: 18))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
-                    .background(Color.accent)
-                    .cornerRadius(10)
+                    .buttonStyle(PlainButtonStyle())
                     
-                    Button("Civilization") {
+                    Button(action: {
                         var civilizationNumber: Int
                         repeat {
                             civilizationNumber = Int.random(in: 0...(numberOfWildCiv-1))
                         } while civilizationNumber == lastImageNumber
                         imageName = "civilization\(civilizationNumber)"
                         lastImageNumber = civilizationNumber
+                    }) {
+                        Text("Civilization")
+                            .font(.custom("ArchivoBlack-Regular", size: 15))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 10)
+                            .background(Color.accent)
+                            .cornerRadius(10)
+                            .minimumScaleFactor(0.8)
+                            .lineLimit(1)
                     }
-                    .font(.custom("ArchivoBlack-Regular", size: 18))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
-                    .background(Color.accent)
-                    .cornerRadius(10)
+                    .buttonStyle(PlainButtonStyle())
                 }
                 
                 // STAT TRACKER
@@ -406,7 +419,7 @@ struct StatBox: View {
             Button(action: onRoll) {
                 Text(statName.uppercased())
                     .font(.custom("ArchivoBlack-Regular", size: 14))
-                    .foregroundColor(.accent)
+                    .foregroundColor(Color.accent)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 6)
                     .frame(minWidth: 60)
